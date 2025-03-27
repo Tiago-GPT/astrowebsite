@@ -5,12 +5,12 @@ const links = [
   {
     ref: '01',
     name: 'Home',
-    href: '/astrowebsite',
+    href: `${base}`,
   },
   {
     ref: '02',
     name: 'About',
-    href: '/about',
+    href: `${base}/about`,
   },
 ];
 ---
@@ -34,7 +34,7 @@ const links = [
           class="h-8 w-auto"
           width="65"
           height="40"
-          :src="$store.theme.isDark ? `${base}/assets/logo-inverted.svg' : `${base}/assets/logo.svg'"
+          :src=`$store.theme.isDark ? '${base}/assets/logo-inverted.svg' : '${base}/assets/logo.svg'`
           alt="Stone"
         />
       </a>
