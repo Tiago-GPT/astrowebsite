@@ -2,41 +2,21 @@
 const features = [
   {
     id: 'expertise-1',
-    name: 'Digital Experience Platforms',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    name: 'Game Engines & Development',
+    description: ['Unreal Engine', 'Unity'],
   },
   {
     id: 'expertise-2',
-    name: 'Web & Mobile Development',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    name: 'Programming Languages',
+    description: ['C++ / C / Objective-C', 'C#', 'Python'],
   },
   {
     id: 'expertise-3',
-    name: 'Serverless Computing Platforms',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-  },
-  {
-    id: 'expertise-4',
-    name: 'Build & Test Automation Tools',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-  },
-  {
-    id: 'expertise-5',
-    name: 'Artificial Intelligence',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-  },
-  {
-    id: 'expertise-6',
-    name: 'Full project support',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    name: 'Systems & Infrastructure',
+    description: ['General scripting', 'Build pipelines (Jenkins, TeamCity, custom solutions)', 'Mobile development (Java / Swift / Kotlin)'],
   },
 ];
+
 ---
 
 <section class="py-16 sm:py-20">
@@ -86,9 +66,11 @@ const features = [
                   </button>
                 </dt>
                 <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-                    {feature.description}
-                  </p>
+                  <ul class="list-disc pl-5 text-primary-950/70 dark:text-primary-200/70 text-base">
+                    {feature.description.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </dd>
               </div>
             ))

@@ -8,4 +8,6 @@ export default defineConfig({
     viewTransitions: true,
   },
   integrations: [tailwind(), compress()],
+  site: 'https://Tiago-GPT.github.io',
+  base: 'Tiago-GPT.github.io',
 });

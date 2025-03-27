@@ -1,26 +1,19 @@
 ---
+const d = new Date();
+let year = d.getFullYear();
+
 const bottomLinks = [
   {
     header: 'Social',
     links: [
       {
-        name: 'Github',
-        href: 'https://github.com/',
+        name: 'Email',
+        href: 'mailto:someone@example.com',
         isExternal: true,
       },
       {
-        name: 'Twitter',
-        href: 'https://twitter.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Instagram',
-        href: 'https://instagram.com/',
-        isExternal: true,
-      },
-      {
-        name: 'Facebook',
-        href: 'https://facebook.com/',
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/',
         isExternal: true,
       },
     ],
@@ -35,17 +28,7 @@ const bottomLinks = [
       },
       {
         name: 'About',
-        href: '/about',
-        isExternal: false,
-      },
-      {
-        name: 'Pricing',
-        href: '/pricing',
-        isExternal: false,
-      },
-      {
-        name: 'Contact',
-        href: '/contact',
+        href: '/my-repo/about',
         isExternal: false,
       },
     ],
@@ -56,16 +39,6 @@ const bottomLinks = [
       {
         name: 'Privacy',
         href: '/privacy',
-        isExternal: false,
-      },
-      {
-        name: '404',
-        href: '/404',
-        isExternal: false,
-      },
-      {
-        name: 'Styleguide',
-        href: '/styleguide',
         isExternal: false,
       },
     ],
@@ -89,10 +62,9 @@ const bottomLinks = [
           alt="Stone"
         />
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
-          Stone is a premium Astro theme specially designed for Business, Marketing, SaaS and
-          Startup websites.
+          Game development, production, music, VFX, tech-art, and engineering.
         </p>
-        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© 2023 Stone</p>
+        <p class="text-primary-950/70 dark:text-primary-200/70 text-sm">© {year} [COMPANY_NAME]</p>
       </div>
 
       <!-- Bottom links -->
