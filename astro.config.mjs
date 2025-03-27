@@ -10,4 +10,5 @@ export default defineConfig({
   integrations: [tailwind(), compress()],
   site: 'https://Tiago-GPT.github.io/astrowebsite',
   base: '/astrowebsite',
+  trailingSlash: "never"
 });
