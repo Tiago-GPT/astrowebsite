@@ -24,6 +24,7 @@ const links = [
     class="mx-auto flex max-w-2xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8"
   >
     <!-- Brand logo -->
+    <!-- sm:h-30 sm:w-52 -->
     <div class="flex">
       <a
         href=`${base}`
@@ -31,9 +32,9 @@ const links = [
       >
         <span class="sr-only">[COMPANY_NAME]</span>
         <img
-          class="xl:h-22 xl:w-40 sm:h-16 sm:w-32"
-          width="65"
-          height="40"
+          class="sm:h-30 sm:w-52"
+          width="130"
+          height="80"
           :src=`$store.theme.isDark ? '${base}/assets/BGS_LOGO_BK.png' : '${base}/assets/BGS_LOGO_BK_4WHITE.png'`
           alt="[COMPANY_NAME]"
         />
