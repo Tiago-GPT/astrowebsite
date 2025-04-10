@@ -1,14 +1,16 @@
 ---
+let base = import.meta.env.BASE_URL.replace(/\/$/, ''); // Remove trailing slash
+
 const values = [
   [
     {
-      ref: '01',
+      image: `${base}/assets/1.png`,
       name: 'Saudade & Spark (Nostalgia with a Twist)',
       description:
         'We honor tradition but never cling to it. Like Portugal’s saudade—a longing for the past—we draw inspiration from our own gaming roots, then push to reinvent them with bold, modern gameplay. In our team and partnerships, we value heritage as a launchpad, not a limit.',
     },
     {
-      ref: '02',
+      image: `${base}/assets/3.png`,
       name: 'Maritime Mentality (Explore Together)',
       description:
         'Great games, like great voyages, demand trust and shared direction. We cultivate open communication, adaptability, and a willingness to venture into the unknown—whether across disciplines or across borders with partner studios.',
@@ -16,13 +18,13 @@ const values = [
   ],
   [
     {
-      ref: '03',
+      image: `${base}/assets/2.png`,
       name: 'Caldeirada Culture (Strength in the Mix)',
       description:
         'Named after Portugal’s iconic fish stew, we believe the best ideas emerge when diverse "ingredients" come together. We actively seek perspectives—from our team to collaborators—knowing that friction refines brilliance, and every voice adds flavor.',
     },
     {
-      ref: '04',
+      image: `${base}/assets/4.png`,
       name: 'Technical with Alma (Skill with Soul)',
       description:
         'We marry technical excellence with emotional depth. For our team, this means mastery paired with passion; for our partners, it means delivering work that’s polished, well produced and pulsating with life—games that feel handcrafted, not factory-made.',
@@ -42,7 +44,7 @@ const values = [
             <div class:list={['space-y-8', index === 1 && 'lg:mt-16']}>
               {column.map((value) => (
                 <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-12 rounded-3xl px-6 py-8">
-                  <p class="text-sm">{value.ref}</p>
+                  <img class="h-auto w-16" src={value.image} alt={value.name} />
                   <div class="flex flex-col gap-4">
                     <h3 class="text-lg font-medium">{value.name}</h3>
                     <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
