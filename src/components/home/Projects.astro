@@ -5,6 +5,7 @@ const projects = [
   {
     name: 'Dune Awakening',
     img: `dune-awakening.jpg`,
+    link: 'https://www.duneawakening.com',
     description: 'We are no strangers to treacherous waters and shifting tides—but now, we find ourselves in a sea of sand. As part of Funcom’s grand expedition into Frank Herbert’s Dune universe, we have spent nearly four years diving deep into the intricate systems of a highly customized Unreal Engine 5, working side by side with Funcom’s team as co-developers. Our seamless integration speaks volumes about our ability to adapt, collaborate, and thrive within a large-scale production.',
     additionalImages: [
       /* copy paste this block to add more images with text under additional images inside a project
@@ -31,6 +32,8 @@ const projects = [
     */
 ];
 
+
+
 ---
 
 <section class="py-12 sm:py-16">
@@ -41,7 +44,9 @@ const projects = [
         {
           projects.map((project) => (
             <div class="bg-primary-500/10 dark:bg-primary-400/10 flex flex-col gap-6 sm:gap-12 rounded-3xl px-6 py-4 sm:py-8">
-              <img class="w-full h-auto object-cover" src={`${base}/assets/${project.img}`} alt={project.name} />
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <img class="w-full h-auto object-cover cursor-pointer" src={`${base}/assets/${project.img}`} alt={project.name} />
+              </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-medium">{project.name}</h3>
                 <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
@@ -53,9 +58,16 @@ const projects = [
                   <div class="flex flex-col gap-8">
                     {project.additionalImages.map((image, index) => (
                       <div key={index} class="flex flex-col gap-4">
-                        <img class="w-full h-auto object-cover" src={`${base}/assets/${image.img}`} alt={`Additional image ${index + 1}`} />
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          <img class="w-full h-auto object-cover cursor-pointer" src={`${base}/assets/${image.img}`} alt={`Additional image ${index + 1}`} />
+                        </a>
                         <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-                          {image.text}
+                          {image.text.split('\n').map((line, i) => (
+                            <span key={i}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
                         </p>
                       </div>
                     ))}

@@ -13,17 +13,17 @@ let base = import.meta.env.BASE_URL.replace(/\/$/, ''); // Remove trailing slash
           </p>
         </div>
         <a
-          href="mailto:someone@example.com"
+          href=`${base}/about`
           class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          Contact us
+          Know More About Us
         </a>
       </div>
       <img
-        class="h-auto w-full rounded-3xl"
-        width="1280"
-        height="640"
-        src=`${base}/assets/Banner1.png`
+        class="h-auto w-full max-h-[684px] object-cover rounded-3xl"
+        width="1216"
+        height="684"
+        src={`${base}/assets/Test_CODFISH.png`}
         alt="Hero picture"
       />
     </div>
