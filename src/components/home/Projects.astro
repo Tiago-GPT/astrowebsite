@@ -6,7 +6,7 @@ const projects = [
     name: 'Dune Awakening',
     img: `dune-awakening.jpg`,
     link: 'https://www.duneawakening.com',
-    description: 'We are no strangers to treacherous waters and shifting tides—but now, we find ourselves in a sea of sand. As part of Funcom’s grand expedition into Frank Herbert’s Dune universe, we have spent nearly four years diving deep into the intricate systems of a highly customized Unreal Engine 5, working side by side with Funcom’s team as co-developers. Our seamless integration speaks volumes about our ability to adapt, collaborate, and thrive within a large-scale production.',
+    description: `We are no strangers to treacherous waters and shifting tides—but now, we find ourselves in a sea of sand. As part of <a href="https://www.funcom.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Funcom</a>’s grand expedition into Frank Herbert’s Dune universe, we have spent nearly four years diving deep into the intricate systems of a highly customized Unreal Engine 5, working side by side with <a href="https://www.funcom.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">Funcom</a>'s team as co-developers. Our seamless integration speaks volumes about our ability to adapt, collaborate, and thrive within a large-scale production.`,  
     additionalImages: [
       /* copy paste this block to add more images with text under additional images inside a project
       {
@@ -16,7 +16,15 @@ const projects = [
       */
       {
         img: `dune-awakening-gameplay.jpg`,
-        text: 'Like the Spice Harvesters braving the sands of Arrakis, we navigate Dune: Awakening’s complex systems with precision, ensuring performance, stability, and gameplay excellence. This was our sandwalk during this journey: \n Rendering – Bringing the sands of Arrakis to life Networking – Ensuring seamless multiplayer experiences Server & Client Infrastructure – The backbone of stability Performance Optimization – Pushing Unreal Engine 5 to its limits General Gameplay & UI/UX – Crafting immersive player interactions Production & Planning – Keeping the journey on course',
+        text: `Like the Spice Harvesters braving the sands of Arrakis, we navigate Dune: Awakening’s complex systems with precision, ensuring performance, stability, and gameplay excellence. This was our sandwalk during this journey:<br><br>
+              <strong>Rendering</strong> – Bringing the sands of Arrakis to life<br>
+              <strong>Networking</strong> – Ensuring seamless multiplayer experiences<br>
+              <strong>Server & Client Infrastructure</strong> – The backbone of stability<br>
+              <strong>Performance Optimization</strong> – Pushing Unreal Engine 5 to its limits<br>
+              <strong>General Gameplay & UI/UX</strong> – Crafting immersive player interactions<br>
+              <strong>Production & Planning</strong> – Keeping the journey on course<br><br>
+              COMING TO PC MAY 20th, 2025`
+
       }, 
     ],
   },
@@ -49,9 +57,7 @@ const projects = [
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-medium">{project.name}</h3>
-                <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-                  {project.description}
-                </p>
+                <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg" set:html={project.description}></p>
               </div>
               {
                 project.additionalImages && project.additionalImages.length > 0 && (
@@ -62,12 +68,7 @@ const projects = [
                           <img class="w-full h-auto object-cover cursor-pointer" src={`${base}/assets/${image.img}`} alt={`Additional image ${index + 1}`} />
                         </a>
                         <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg">
-                          {image.text.split('\n').map((line, i) => (
-                            <span key={i}>
-                              {line}
-                              <br />
-                            </span>
-                          ))}
+                          <p class="text-primary-950/70 dark:text-primary-200/70 text-base sm:text-lg" set:html={image.text}></p>
                         </p>
                       </div>
                     ))}
