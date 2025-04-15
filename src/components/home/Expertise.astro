@@ -13,7 +13,11 @@ const features = [
   {
     id: 'expertise-3',
     name: 'Systems & Infrastructure',
-    description: ['General scripting', 'Build pipelines (Jenkins, TeamCity, custom solutions)', 'Mobile development (Java / Swift / Kotlin)'],
+    description: [
+      'General scripting',
+      'Build pipelines (Jenkins, TeamCity, custom solutions)',
+      'Mobile development (Java / Swift / Kotlin)',
+    ],
   },
 ];
 ---
@@ -31,7 +35,22 @@ const features = [
             features.map((feature, index) => (
               <div
                 class="rounded-3xl px-4 transition"
-                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
+                x-data={`{
+                  id: ${index},
+                  contentVisible: true,
+                  get isOpen() { return this.id === this.selected },
+                  get isNextOpen() { return (this.id + 1) === this.selected },
+                  init() {
+                    this.$watch('isOpen', (value) => {
+                      if (value) {
+                        this.contentVisible = true;
+                      } else {
+                        setTimeout(() => { this.contentVisible = false }, 100); // Hide content faster
+                      }
+                    });
+                    this.contentVisible = this.isOpen;
+                  }
+                }`}
                 x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
               >
                 <dt
@@ -43,15 +62,15 @@ const features = [
                     type="button"
                     class="group block w-full py-6 text-left transition focus-visible:outline-none"
                     aria-controls={feature.id}
-                    x-on:click="toggle(id)"
+                    x-on:click="toggle($data.id)"
                     aria-expanded="false"
                     x-bind:aria-expanded="isOpen.toString()"
                   >
-                    <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
+                    <div class="flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200">
                       <span class="font-medium">{feature.name}</span>
                       <span class="ml-6 flex h-7 items-center">
                         <svg
-                          class="text-primary-600 dark:text-primary-400 h-6 w-6 rotate-0 transform transition duration-200 ease-in-out"
+                          class="h-6 w-6 rotate-0 transform text-primary-600 transition duration-200 ease-in-out dark:text-primary-400"
                           x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -64,12 +83,17 @@ const features = [
                     </div>
                   </button>
                 </dt>
-                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
-                  <ul class="list-disc pl-5 text-primary-950/70 dark:text-primary-200/70 text-base">
-                    {feature.description.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                <dd class="overflow-hidden" id={feature.id} x-show="isOpen" x-cloak x-collapse>
+                  <div
+                    class="pb-6 pr-6 pt-2 transition-opacity duration-100 ease-linear"
+                    x-bind:class="{ 'opacity-100': $data.contentVisible, 'opacity-0': !$data.contentVisible }"
+                  >
+                    <ul class="list-disc pl-5 text-base text-primary-950/70 dark:text-primary-200/70">
+                      {feature.description.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </dd>
               </div>
             ))
