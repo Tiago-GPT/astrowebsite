@@ -24,6 +24,8 @@ let base = import.meta.env.BASE_URL.replace(/\/$/, ''); // Remove trailing slash
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href={`${base}/site.webmanifest`} />
+    <link rel="preload" href="/assets/BacalhauGamesBlack.png" as="image" />
+    <link rel="preload" href="/assets/BacalhauGamesWhite.png" as="image" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
