@@ -1,5 +1,7 @@
 ---
 let base = import.meta.env.BASE_URL.replace(/\/$/, ''); // Remove trailing slash
+const normalize = (url) => url.replace(/\/+$/, '');
+const currentPath = normalize(Astro.url.pathname);
 
 const links = [
   {
@@ -47,12 +49,17 @@ const links = [
       <div class="hidden pr-3 lg:flex items-center space-x-6 text-xl font-medium text-primary-950 dark:text-primary-200 justify-end flex-1">
         {
           links.map((link) => (
-            <a
-              href={link.href}
-              class="hover:text-[#cf7e52]"
-            >
-              {link.name}
-            </a>
+          <a
+            href={link.href}
+            class={`transition
+              ${
+                normalize(link.href) === currentPath
+                  ? 'underline dark:no-underline dark:text-[#cf7e52]'
+                  : 'hover:underline dark:hover:no-underline dark:hover:text-[#cf7e52]'
+              }`}
+          >
+            {link.name}
+          </a>
           ))
         }
       </div>      
@@ -154,9 +161,9 @@ const links = [
               class="text-primary-950 dark:text-primary-200 group inline-flex py-6 text-3xl font-medium tracking-tight transition focus-visible:outline-none sm:py-8 sm:text-4xl"
             >
               <div class="group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200 flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
-                <div class="flex items-center gap-6">
+                <div class="flex items-center gap-6 ">
                   <span class="text-xs">{link.ref}</span>
-                  <span class="group-hover:underline">{link.name}</span>
+                  <span>{link.name}</span>
                 </div>
                 <svg
                   class="text-primary-600 dark:text-primary-400 h-6 w-6 sm:h-8 sm:w-8"
