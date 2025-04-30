@@ -1,7 +1,7 @@
 ---
 let base = Astro.site?.pathname?.replace(/\/$/, '') || '';
-const normalize = (url) => url.replace(/\/+$/, '');
-const currentPath = normalize(Astro.url.pathname);
+const normalize = (url) => url.replace(/^\/+|\/+$/g, '');
+const currentPath = normalize(Astro.url.pathname.replace(base, ''));
 
 const links = [
   {
@@ -53,7 +53,7 @@ const links = [
             href={link.href}
             class={`transition
               ${
-                normalize(link.href) === currentPath
+                normalize(link.href.replace(base, '')) === normalize(Astro.url.pathname.replace(base, ''))
                   ? 'underline dark:no-underline dark:text-[#cf7e52]'
                   : 'hover:underline dark:hover:no-underline dark:hover:text-[#cf7e52]'
               }`}
