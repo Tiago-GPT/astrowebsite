@@ -1,6 +1,6 @@
 ---
 let base = Astro.site?.pathname?.replace(/\/$/, '') || '';
-const normalize = (url) => url.replace(/^\/+|\/+$/g, '');
+const normalize = (url: string) => url.replace(/^\/+|\/+$/g, '');
 const currentPath = normalize(Astro.url.pathname.replace(base, ''));
 
 const links = [
